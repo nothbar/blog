@@ -1,5 +1,5 @@
 
-
+```
 收集的加固特征库，送给需要的有缘人
 
 360
@@ -121,3 +121,4 @@ apktool助手伪加固特征
 application为com.qihoo.util.stub2678363137
 假梆梆加固
 application为com.secoen.apkwrapper.ApplicationWrapper
+```
