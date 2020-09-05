@@ -73,7 +73,7 @@ virsh attach-disk cn71012 /mnt/lv_data/iso/win2012r2/cn_windows_server_2012_r2_v
 iptables -t nat -A PREROUTING -p tcp --dport 3389 -j DNAT --to 192.168.122.107:3389
 iptables -A FORWARD -d 192.168.122.107/32 -p tcp -m state --state NEW -m tcp --dport 3389 -jACCEPT
 ```
-``
+```
 virt-install \
 --virt-type kvm \
 --name cn71001 \
@@ -83,4 +83,33 @@ virt-install \
 --cdrom=/mnt/lv_data/iso/iKuai8_x32_3.0.7_Build201804191004.iso \
 --graphics vnc,password=88333775,port=59001,listen=0.0.0.0 \
 --os-variant rhel6
-``
+```
+
+
+```
+virt-install \
+--name enwin2k8r2 \
+--ram 2048 \
+--vcpus 2 \
+--os-type windows \
+--os-variant win2k8 \
+--network bridge=br0 \
+--accelerate \
+--disk path=/data/images/win2008r2en.img,format=qcow2,size=15 \
+--cdrom=/mnt/en_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_vl_build_x64_dvd_617403.iso \
+--graphics vnc,listen=0.0.0.0,password=hm123,port=5910 \
+--noautoconsole
+```
+
+```
+--name  虚拟机名称
+--ram     内存大小
+--vcpus   处理器核数
+--os-type 系统类型
+--os-variant  系统版本
+--network   网络类型
+--accelerate  优化选项
+--disk    磁盘镜像
+--cdrom  安装镜像
+--noautoconsole  不启动kvm安装控制台
+```
