@@ -1,3 +1,43 @@
+如果你的系统是最小化安装的，那你应该安装以下所需软件：
+```
+
+# yum groupinstall "GNOME 桌面"     //安装GNOME桌面环境
+
+查看cpu是否支持
+
+# grep -E 'svm|vmx' /proc/cpuinfo
+
+- vmx is for Intel processors
+
+- svm is for AMD processors
+
+
+
+安装虚拟化软件
+
+# yum install epel-rpm-macros.noarch       //安装epel源
+
+# yum install qemu qemu-img qemu-kvm  libvirt libvirt-python libguestfs-tools virt-install
+
+# yum install virt-manager virt-viewer     //安装图形化工具
+
+# systemctl enable libvirtd                
+
+# systemctl start libvirtd
+
+
+
+检查KVM模块是否安装
+
+[root@localhost ~]# lsmod |grep kvm
+
+kvm_intel             174250  0 
+
+kvm                   570658  1 kvm_intel
+
+irqbypass              13503  1 kvm
+```
+
 在CentOS6的上安装Windows2012R2的KVM虚拟机
 
 1：上传cn_windows_server_2012_r2_vl_with_update_x64_dvd_6052729.iso
