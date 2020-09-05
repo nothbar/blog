@@ -125,3 +125,6 @@ yum install virtio-win
 chmod  0660 cn_windows_server_2012_r2_x64_dvd_2707961.iso
   297  virt-install --name 2012r2 --memory 2048 --vcpus sockets=1,cores=2,threads=2 --disk device=cdrom,path=/home/cn_windows_server_2012_r2_x64_dvd_2707961.iso --disk device=cdrom,path=/usr/share/virtio-win/virtio-win.iso --disk path=/home/data/images/win2012r2.img,size=100,bus=virtio --network bridge=virbr0,model=virtio --noautoconsole --accelerate --graphics vnc,listen=0.0.0.0,password=Zxc1986126,port=25910
 ```
+
+### 添加网卡
+https://www.cnblogs.com/chenjiahe/p/5950038.html
