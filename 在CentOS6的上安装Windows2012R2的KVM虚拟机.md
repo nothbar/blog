@@ -115,6 +115,8 @@ virt-install \
 ```
 
 最后
+https://ngx.hk/2016/10/07/kvm%E5%AE%89%E8%A3%85win-server-2012-r2.html
+安装成功
 ```
  wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo -O /etc/yum.repos.d/virtio-win.repo
 yum install virtio-win
