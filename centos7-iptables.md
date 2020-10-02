@@ -7,42 +7,54 @@ CentOS7安装和配置iptables防火墙
 从CentOS7(RHEL7)开始，官方的标准防火墙设置软件从iptables变更为firewalld。 因此，为了使Fail2ban与iptables联动，需禁用自带的firewalld服务，同时安装iptables服务。
 
 首先，使用如下命令停止和禁用自带的firewalld服务。
-
+```
 systemctl stop firewalld
 systemctl mask firewalld
+```
 
 然后，使用如下命令安装iptables。
 
+```
 yum install -y iptables
 yum update iptables 
 yum install iptables-services
+```
 
 为了记录iptables防火墙丢弃的数据包到日志文件，还需修改/etc/rsyslog.conf文件。
 
+```
 vim  /etc/rsyslog.conf
+```
 
 填入以下内容。
 
+```
 kern.*     /var/log/iptables.log
+```
 
 重启rsyslog服务。
 
+```
 service rsyslog restart
+```
 
 另外，还需对日志文件每隔一段时间（一周）进行切割，所以需要编辑/etc/logrotate.d/syslog文件。
 
+```
 vim /etc/logrotate.d/syslog
+```
 
 然后填入以下内容。
-
+```
 /var/log/iptables.log
+```
 
 规则设定
 
 关于iptables的书写规则网上已经有很多说明。本文列举一份针对Web服务器的iptables脚本然后对其进行说明。
 
 以下是一份完整的iptables脚本。
-
+```
 iptables -P INPUT ACCEPT
 iptables -F
 iptables -X
@@ -56,12 +68,14 @@ iptables -A INPUT  -p tcp -j LOG --log-prefix "iptables denied"
 iptables -P INPUT   DROP
 iptables -P OUTPUT  ACCEPT
 iptables -P FORWARD ACCEPT
+```
 
 然后重启防火墙。
-
+```
 service iptables save
 service iptables restart
-
+```
+```
 查看iptables现有规则
 
 iptables -L -n
@@ -136,3 +150,4 @@ iptables -A INPUT -p tcp -s 192.168.0.1 --dport 3306 -j ACCEPT
 如果要封停一个IP：192.168.0.1。
 
 iptables -A INPUT -s 192.168.0.1 -j DROP
+```
