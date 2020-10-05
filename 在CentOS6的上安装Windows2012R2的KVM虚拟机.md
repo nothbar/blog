@@ -130,4 +130,7 @@ chmod  0660 cn_windows_server_2012_r2_x64_dvd_2707961.iso
 https://www.cnblogs.com/chenjiahe/p/5950038.html
 
 ###kvm 鼠标偏移问题
+在<devices>标签下添加
+``
 <input type='tablet' bus='usb'/>
+```
