@@ -1,3 +1,17 @@
+```shell
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+export PATH="$PATH:/path/to/depot_tools"
+mkdir ~/chromium && cd ~/chromium
+fetch --nohooks chromium
+cd src
+git checkout -b stable_87 tags/87.0.4280.9
+./build/install-build-deps.sh
+gclient runhooks
+gn gen out/Default
+
+gn args out/Default
+
+```
 ```
 is_official_build = true
 is_debug = false
@@ -18,4 +32,7 @@ treat_warnings_as_errors=false
 use_official_google_api_keys=false
 use_unofficial_version_number=false
 fieldtrial_testing_like_official_build=true
+```
+```shell
+autoninja -C out/Default chrome
 ```
