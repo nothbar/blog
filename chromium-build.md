@@ -25,6 +25,8 @@ enable_nacl=false
 enable_nacl_nonsfi=false
 headless_use_embedded_resources = true
 
+proprietary_codecs=true
+ffmpeg_branding="Chrome"
 google_api_key=""
 google_default_client_id=""
 google_default_client_secret=""
