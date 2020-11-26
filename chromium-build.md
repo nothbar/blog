@@ -16,7 +16,7 @@ gn args out/Default
 is_official_build = true
 is_debug = false
 symbol_level = 0
-enable_nacl = false
+is_component_build= false
 blink_symbol_level=0
 disable_ftp_support=true
 disable_libfuzzer=true
